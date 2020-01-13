@@ -32,6 +32,9 @@ class QuestionnaireController extends Controller
     }
 
     public function show(\App\Questionnaire $questionnaire){
-    	return view('questionnaire.show', compact('questionnaire'));
+    	// dd($questionnaire);
+        // Lazy loading
+        $questionnaire->load('questions.answers');
+        return view('questionnaire.show', compact('questionnaire'));
     }
 }
